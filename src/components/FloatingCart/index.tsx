@@ -12,6 +12,8 @@ import {
 } from './styles';
 
 import formatValue from '../../utils/formatValue';
+import calculateCartTotal from '../../utils/calculateCartTotal';
+import calculateTotalItensInCart from '../../utils/calculateTotalItensInCart';
 
 import { useCart } from '../../hooks/cart';
 
@@ -23,17 +25,9 @@ const FloatingCart: React.FC = () => {
 
   const navigation = useNavigation();
 
-  const cartTotal = useMemo(() => {
-    // TODO RETURN THE SUM OF THE PRICE FROM ALL ITEMS IN THE CART
+  const cartTotal = calculateCartTotal(products);
 
-    return formatValue(0);
-  }, [products]);
-
-  const totalItensInCart = useMemo(() => {
-    // TODO RETURN THE SUM OF THE QUANTITY OF THE PRODUCTS IN THE CART
-
-    return 0;
-  }, [products]);
+  const totalItensInCart = calculateTotalItensInCart(products);
 
   return (
     <Container>
